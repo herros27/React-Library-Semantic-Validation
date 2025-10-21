@@ -1,0 +1,25 @@
+{
+  "name": "validation_semantic",
+  "version": "0.1.6",
+  "type": "module",
+  "main": "dist/WasmContext.js",
+  "types": "dist/WasmContext.d.ts",
+  "files": [
+    "dist",
+    "validation_semantic_bg.wasm",
+    "validation_semantic_bg.js",
+    "validation_semantic.js",
+    "validation_semantic.d.ts"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "sideEffects": [
+    "./validation_semantic.js",
+    "./snippets/*"
+  ],
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/react": "^19.2.2"
+  }
+}
