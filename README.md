@@ -86,6 +86,21 @@ export default defineConfig({
 });
 ```
 
+**Make sure the entire app is wrapped by WasmProvider in your main.tsx or app.tsx**
+
+```ts
+import { WasmProvider } from "validation_semantic";
+
+export default function App() {
+  return (
+    // Makesure
+    <WasmProvider>
+      <Router>{/* All Your tag */}</Router>
+    </WasmProvider>
+  );
+}
+```
+
 ---
 
 ### 🚀 Step 3: Use the WASM Module in React
@@ -139,6 +154,7 @@ You can perform **batch validation** (multiple inputs simultaneously) using the 
 Each validation runs **asynchronously and in parallel** for efficiency.
 
 ```tsx
+import React, { useState } from "react";
 import { useWasm } from "validation_semantic";
 
 type InputType =
@@ -156,11 +172,36 @@ type InputType =
 
 export default function BatchValidationExample() {
   const { wasmReady, wasmModule, error: wasmError } = useWasm();
-  const modelToUseKey = "GEMINI_FLASH"; //GEMINI_FLASH_LITE, GEMINI_FLASH_LATEST, GEMMA
+  const modelToUseKey = "GEMINI_FLASH";
+
+  const [formData, setFormData] = useState<Record<InputType, string>>({
+    email: "",
+    "full name": "",
+    address: "",
+    "product name": "",
+    "institution name": "",
+    "company name": "",
+    "location name": "",
+    title: "",
+    occupation: "",
+    tag: "",
+    "text area": "",
+  });
+
+  const [results, setResults] = useState<Record<string, any> | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  // Handler perubahan input
+  const handleChange = (key: InputType, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
 
   async function validateBatchInputs() {
     if (!wasmReady || !wasmModule) {
-      console.error("WASM module is not ready.");
+      alert("WASM module is not ready.");
       return;
     }
 
@@ -168,49 +209,92 @@ export default function BatchValidationExample() {
     const modelSelectorInt = supportedModels[modelToUseKey];
 
     if (typeof modelSelectorInt === "undefined") {
-      throw new Error(`Model ${modelToUseKey} not found.`);
+      alert(`Model ${modelToUseKey} not found.`);
+      return;
     }
 
-    // Inputs to validate
-    const inputs: Record<InputType, string> = {
-      email: "john@example.com",
-      "full name": "John Doe",
-      address: "Jl. Mawar No. 123",
-      "product name": "Error product",
-    };
+    setLoading(true);
+    try {
+      const validationPromises = Object.entries(formData)
+        .filter(([_, value]) => value.trim() !== "") // hanya input yang diisi
+        .map(async ([inputType, inputValue]) => {
+          try {
+            const result = await wasmModule.validateInput(
+              inputValue,
+              modelSelectorInt,
+              inputType as InputType
+            );
+            return { inputType, inputValue, result, error: null };
+          } catch (err: any) {
+            return {
+              inputType,
+              inputValue,
+              result: null,
+              error: err?.message ?? "Validation error occurred.",
+            };
+          }
+        });
 
-    const validationPromises = Object.entries(inputs).map(
-      async ([inputType, inputValue]) => {
-        try {
-          const result = await wasmModule.validateInput(
-            inputValue,
-            modelSelectorInt,
-            inputType as InputType
-          );
-          return { inputType, inputValue, result, error: null };
-        } catch (err: any) {
-          return {
-            inputType,
-            inputValue,
-            result: null,
-            error: err?.message ?? "Validation error occurred.",
-          };
-        }
-      }
-    );
+      const results = await Promise.all(validationPromises);
+      const batchResults = Object.fromEntries(
+        results.map((r) => [
+          r.inputType,
+          { input: r.inputValue, result: r.result, error: r.error },
+        ])
+      );
 
-    const results = await Promise.all(validationPromises);
-    const batchResults = Object.fromEntries(
-      results.map((r) => [
-        r.inputType,
-        { input: r.inputValue, result: r.result, error: r.error },
-      ])
-    );
-
-    console.log("Batch Validation Results:", batchResults);
+      setResults(batchResults);
+      console.log("Batch Validation Results:", batchResults);
+    } finally {
+      setLoading(false);
+    }
   }
 
-  if (!wasmError) validateBatchInputs();
+  return (
+    <div className='max-w-xl mx-auto p-4 space-y-6'>
+      <h1 className='text-xl font-bold text-center'>Batch Validation Form</h1>
+
+      {/* Form Input */}
+      <div className='space-y-4'>
+        {Object.keys(formData).map((key) => (
+          <div key={key} className='flex flex-col'>
+            <label className='font-semibold capitalize'>{key}</label>
+            <input
+              type='text'
+              className='border border-gray-300 rounded-md p-2'
+              value={formData[key as InputType]}
+              onChange={(e) => handleChange(key as InputType, e.target.value)}
+              placeholder={`Masukkan ${key}`}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Tombol Validasi */}
+      <button
+        onClick={validateBatchInputs}
+        disabled={loading || !wasmReady}
+        className='bg-blue-600 text-white px-4 py-2 rounded-md w-full disabled:opacity-50'>
+        {loading ? "Validating..." : "Validate All Inputs"}
+      </button>
+
+      {/* Hasil */}
+      {results && (
+        <div className='mt-6 bg-gray-100 p-4 rounded-md'>
+          <h2 className='font-semibold mb-2'>Validation Results:</h2>
+          <pre className='text-sm bg-white p-2 rounded-md overflow-x-auto'>
+            {JSON.stringify(results, null, 2)}
+          </pre>
+        </div>
+      )}
+
+      {wasmError && (
+        <p className='text-red-500 text-sm text-center mt-4'>
+          Error loading WASM: {wasmError}
+        </p>
+      )}
+    </div>
+  );
 }
 ```
 
