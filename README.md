@@ -21,6 +21,12 @@ For instance, it can distinguish whether an input is a company name, an institut
 
 ---
 
+##  🧠 **Research Notice:**  
+> This library was developed as part of an academic research project.  
+> Developers are encouraged to try it out and share feedback about its performance and usability.  
+> For more details, see the [Research Participation & Feedback](#-research-participation--feedback-request) section below.
+
+
 ## 🌍 Multiplatform Support
 
 The library is designed with modular architecture and can be integrated across multiple environments through **bindings**:
@@ -297,7 +303,6 @@ export default function BatchValidationExample() {
   );
 }
 ```
-
 ---
 
 ### 📋 Example Output (Console)
@@ -360,6 +365,26 @@ export default function BatchValidationExample() {
 | `validateInput(text, model, type, your_gemini_api_key)` | Runs semantic validation on the given text.        |
 
 ---
+
+## 📊 Research Participation & Feedback Request
+
+This library, **`validation_semantic`**, was developed as part of an **academic research project** focused on evaluating the performance and usability of semantic validation systems powered by AI.
+
+If you are a **developer** using this library, your feedback is highly valuable to the research.  
+Please try using the library with various types of inputs such as **names**, **addresses**, **titles**, **descriptions**, or **text areas**, and share your experience.
+
+You may include:
+- Your thoughts on the **ease of use** and **developer experience**
+- The **performance** or **accuracy** of the validation
+- Any **issues or improvements** you would suggest
+- (Optional) **Proof or example** of how you integrated this library in your project
+
+Your contribution will directly support the evaluation and improvement of this research project.
+
+📩 You can contact me directly at: **[khairusnyah8935@gmail.com](mailto:khairusnyah8935@gmail.com)**  
+
+Thank you very much for taking the time to participate and contribute to this study. 🙏
+
 
 ## 🪶 License
 
