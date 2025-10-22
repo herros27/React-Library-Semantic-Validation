@@ -1,5 +1,4 @@
 ---
-
 # 🤖 `validation_semantic` Library with Gemini API
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/herros27/validation_semantic)
@@ -9,6 +8,7 @@
 
 ---
 
+---
 ## 🧠 Overview
 
 `validation_semantic` is a fast, secure, and intelligent **semantic validation library** — built entirely in **Rust** and powered by **Gemini models from Google AI Studio**.
@@ -21,11 +21,12 @@ For instance, it can distinguish whether an input is a company name, an institut
 
 ---
 
+---
 ##  🧠 **Research Notice:**  
 > This library was developed as part of an academic research project.  
 > Developers are encouraged to try it out and share feedback about its performance and usability.  
 > For more details, see the [Research Participation & Feedback](#-research-participation--feedback-request) section below.
-
+---
 
 ## 🌍 Multiplatform Support
 
