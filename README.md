@@ -172,7 +172,7 @@ type InputType =
 
 export default function BatchValidationExample() {
   const { wasmReady, wasmModule, error: wasmError } = useWasm();
-  const modelToUseKey = "GEMINI_FLASH";
+  const modelToUseKey = "GEMINI_FLASH"; //GEMINI_FLASH_LITE, GEMINI_FLASH_LATEST, GEMMA
 
   const [formData, setFormData] = useState<Record<InputType, string>>({
     email: "",
