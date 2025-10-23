@@ -380,26 +380,28 @@ export default function BatchValidationExample() {
 | `validateInput(text, model, type, your_gemini_api_key)` | Runs semantic validation on the given text.        |
 
 ---
+---
 
-## 📊 Partisipasi Penelitian & Permintaan Umpan Balik
+## 📊 Research Participation & Feedback Request
 
-Library **`validation_semantic`** ini dikembangkan sebagai bagian dari **proyek penelitian akademik** yang berfokus pada evaluasi kinerja dan kemudahan penggunaan sistem validasi semantik berbasis AI.
+The **`validation_semantic`** library was developed as part of an **academic research project** focused on evaluating the performance and usability of AI-based semantic validation systems.
 
-Jika Anda adalah seorang **pengembang** yang menggunakan library ini, umpan balik Anda sangat berharga bagi penelitian ini.
-Silakan coba gunakan library ini dengan berbagai jenis input seperti **nama**, **alamat**, **judul**, **deskripsi**, atau **kolom teks**, dan bagikan pengalaman Anda.
+If you are a **developer** using this library, your feedback is highly valuable for this research.
+Please try using the library with different types of inputs such as **names**, **addresses**, **titles**, **descriptions**, or **text fields**, and share your experience.
 
-Anda dapat menyertakan:
+You may include:
 
-* Pendapat Anda mengenai **kemudahan penggunaan** dan **pengalaman pengembang**
-* **Kinerja** atau **akurasi** dari hasil validasi
-* Setiap **masalah atau saran perbaikan** yang ingin Anda ajukan
-* (Opsional) **Bukti atau contoh** bagaimana Anda mengintegrasikan library ini ke dalam proyek Anda
+* Your thoughts on the **ease of use** and **developer experience**
+* The **performance** or **accuracy** of the validation results
+* Any **issues or improvement suggestions** you’d like to report
+* (Optional) **Examples or evidence** of how you integrated the library into your project
 
-Kontribusi Anda akan secara langsung mendukung evaluasi dan pengembangan lebih lanjut dari proyek penelitian ini.
+Your contributions will directly support the evaluation and further development of this research project.
 
-📩 Anda dapat menghubungi saya secara langsung di: **[khairusnyah8935@gmail.com](mailto:khairusnyah8935@gmail.com)**
+📩 You can share your feedback by **opening an Issue on the official GitHub repository**:
+👉 [GitHub Issues](https://github.com/herros27/validation_semantic/issues)
 
-Terima kasih banyak telah meluangkan waktu untuk berpartisipasi dan berkontribusi dalam penelitian ini. 🙏
+Thank you very much for taking the time to participate and contribute to this research. 🙏
 
 ---
 
