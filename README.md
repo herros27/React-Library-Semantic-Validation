@@ -5,6 +5,8 @@
 ![GitHub stars](https://img.shields.io/github/stars/herros27/validation_semantic?style=social)
 ![TestPyPI](https://img.shields.io/badge/TestPyPI-validation--semantic-blue?logo=pypi)
 ![Rust Build Status](https://github.com/herros27/validation_semantic/actions/workflows/release.yml/badge.svg)
+![npm version](https://img.shields.io/npm/v/validation_semantic?logo=npm)
+![npm downloads](https://img.shields.io/npm/dt/validation_semantic?logo=npm)
 
 ---
 
