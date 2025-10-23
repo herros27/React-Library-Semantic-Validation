@@ -315,31 +315,32 @@ export default function BatchValidationExample() {
 
 ```json
 {
-  "email": {
-    "input": "john@example.com",
-    "result": {
-      "valid": false,
-      "message": "The domain 'example.com' is a reserved test domain and not valid for real-world use."
+    "nama": {
+        "input": "John Doe",
+        "result": {
+            "valid": true,
+            "message": "Nama valid."
+        },
+        "error": null
     },
-    "error": null
-  },
-  "full name": {
-    "input": "John Doe",
-    "result": {
-      "valid": true,
-      "message": "Valid name."
+    "email": {
+        "input": "john@example.com",
+        "result": {
+            "valid": false,
+            "message": "Alamat email menggunakan domain 'example.com' yang merupakan domain contoh dan tidak valid untuk penggunaan nyata. Silakan gunakan domain yang valid dan profesional."
+        },
+        "error": null
     },
-    "error": null
-  },
-  "address": {
-    "input": "Jl. Mawar No. 123",
-    "result": {
-      "valid": true,
-      "message": "Valid address."
-    },
-    "error": null
-  }
+    "alamat": {
+        "input": "error di sini",
+        "result": {
+            "valid": false,
+            "message": "Alamat tidak valid karena mengandung kata-kata yang tidak membentuk struktur alamat fisik yang realistis."
+        },
+        "error": null
+    }
 }
+
 ```
 
 ---
