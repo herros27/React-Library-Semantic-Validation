@@ -5,6 +5,9 @@ on:
     branches:
       - main   # Ganti kalau kamu pakai branch lain
 
+permissions:
+  contents: write  
+  
 jobs:
   publish:
     runs-on: ubuntu-latest
