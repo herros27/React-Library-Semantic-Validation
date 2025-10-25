@@ -1,6 +1,6 @@
 {
   "name": "@herros27/validation_semantic",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "type": "module",
   "main": "dist/WasmContext.js",
   "types": "dist/WasmContext.d.ts",
