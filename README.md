@@ -11,6 +11,7 @@
 ---
 
 ---
+
 ## 🧠 Overview
 
 `validation_semantic` is a fast, secure, and intelligent **semantic validation library** — built entirely in **Rust** and powered by **Gemini models from Google AI Studio**.
@@ -26,6 +27,7 @@ For instance, it can distinguish whether an input is a company name, an institut
 ---
 
 ## 🧠 **Research Notes:**
+
 > This library was developed as part of an academic research project.
 > Developers are encouraged to try it out and provide feedback regarding its performance and ease of use.
 > For more information, see the [Research Participation & Feedback Request](#-research-participation--feedback-request) section below.
@@ -308,6 +310,7 @@ export default function BatchValidationExample() {
   );
 }
 ```
+
 ---
 
 ### 📋 Example Output (Console)
@@ -347,7 +350,6 @@ export default function BatchValidationExample() {
     "error": null
   }
 }
-
 ```
 
 ---
@@ -379,6 +381,7 @@ export default function BatchValidationExample() {
 | `validateInput(text, model, type, your_gemini_api_key)` | Runs semantic validation on the given text.        |
 
 ---
+
 ---
 
 ## 📊 Research Participation & Feedback Request
@@ -390,15 +393,15 @@ Please try using the library with different types of inputs such as **names**, *
 
 You may include:
 
-* Your thoughts on the **ease of use** and **developer experience**
-* The **performance** or **accuracy** of the validation results
-* Any **issues or improvement suggestions** you’d like to report
-* (Optional) **Examples or evidence** of how you integrated the library into your project
+- Your thoughts on the **ease of use** and **developer experience**
+- The **performance** or **accuracy** of the validation results
+- Any **issues or improvement suggestions** you’d like to report
+- (Optional) **Examples or evidence** of how you integrated the library into your project
 
 Your contributions will directly support the evaluation and further development of this research project.
 
 📩 You can share your feedback by **opening an Issue on the official GitHub repository**:
-👉 [GitHub Issues](https://github.com/herros27/validation_semantic/issues)
+👉 [GitHub Issues](https://github.com/herros27/React-Library-Semantic-Validation/issues)
 
 Thank you very much for taking the time to participate and contribute to this research. 🙏
 

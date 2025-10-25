@@ -1,0 +1,40 @@
+name: 🚀 Auto Publish to npm (Patch Increment)
+
+on:
+  push:
+    branches:
+      - main   # Ganti kalau kamu pakai branch lain
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Bump patch version
+        run: |
+          npm version patch --no-git-tag-version
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git commit -m "chore: bump patch version [skip ci]" || echo "No changes to commit"
+          git push
+
+      - name: Build package (optional)
+        run: npm run build --if-present
+
+      - name: Publish package
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
