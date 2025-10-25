@@ -1,5 +1,5 @@
 ---
-# 🤖 `semantic_validation` Library with Gemini API
+# 🤖 `Semantic Validation` Library with Gemini API
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/herros27/validation_semantic)
 ![GitHub stars](https://img.shields.io/github/stars/herros27/validation_semantic?style=social)
@@ -25,11 +25,10 @@ For instance, it can distinguish whether an input is a company name, an institut
 
 ---
 
-## 🧠 **Catatan Penelitian:**
-
-> Library ini dikembangkan sebagai bagian dari proyek penelitian akademik.
-> Pengembang didorong untuk mencoba dan memberikan umpan balik terkait kinerja serta kemudahan penggunaannya.
-> Untuk informasi lebih lanjut, lihat bagian [Partisipasi Penelitian & Permintaan Umpan Balik](#-partisipasi-penelitian--permintaan-umpan-balik) di bawah ini.
+## 🧠 **Research Notes:**
+> This library was developed as part of an academic research project.
+> Developers are encouraged to try it out and provide feedback regarding its performance and ease of use.
+> For more information, see the [Research Participation & Feedback Request](#-research-participation--feedback-request) section below.
 
 ---
 
@@ -384,7 +383,7 @@ export default function BatchValidationExample() {
 
 ## 📊 Research Participation & Feedback Request
 
-The **`validation_semantic`** library was developed as part of an **academic research project** focused on evaluating the performance and usability of AI-based semantic validation systems.
+The **`Semantic Validation`** library was developed as part of an **academic research project** focused on evaluating the performance and usability of AI-based semantic validation systems.
 
 If you are a **developer** using this library, your feedback is highly valuable for this research.
 Please try using the library with different types of inputs such as **names**, **addresses**, **titles**, **descriptions**, or **text fields**, and share your experience.
