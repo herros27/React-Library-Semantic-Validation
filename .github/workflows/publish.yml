@@ -1,13 +1,14 @@
-name: 🚀 Auto Publish to npm (Patch Increment)
+name: 🚀 Auto Publish to GitHub Packages
 
 on:
   push:
     branches:
-      - main   # Ganti kalau kamu pakai branch lain
+      - main
 
 permissions:
-  contents: write  
-  
+  contents: write
+  packages: write   # 👉 izinkan publish ke GitHub Packages
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -20,7 +21,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://registry.npmjs.org/'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@herros27'   # ganti dengan username GitHub kamu
 
       - name: Install dependencies
         run: npm ci
@@ -32,12 +34,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add package.json package-lock.json
           git commit -m "chore: bump patch version [skip ci]" || echo "No changes to commit"
-          git push
+          git push origin HEAD:main
 
       - name: Build package (optional)
         run: npm run build --if-present
 
-      - name: Publish package
-        run: npm publish --access public
+      - name: Publish to GitHub Packages
+        run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

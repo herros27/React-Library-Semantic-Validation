@@ -1,5 +1,5 @@
 {
-  "name": "validation_semantic",
+  "name": "@herros27/validation_semantic",
   "version": "0.1.11",
   "type": "module",
   "main": "dist/WasmContext.js",
