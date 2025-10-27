@@ -14,7 +14,9 @@
 
 `validation_semantic` is a fast, secure, and intelligent **semantic validation library** — built entirely in **Rust** and powered by **Gemini models from Google AI Studio**.
 
-This library not only checks data validity **syntactically** (e.g., email or phone number formats), but also performs **semantic analysis** to understand the _meaning and context_ of user input.
+This library operates **entirely on the front-end side** (React, and Next), making it lightweight and efficient for client-side applications that require contextual and intelligent validation without relying heavily on server-side processing.
+
+It not only checks data validity **syntactically** (e.g., email or phone number formats), but also performs **semantic analysis** to understand the *meaning and context* of user input.
 With **Gemini API integration**, the validation process becomes more **contextual, accurate, and adaptive** across multiple data types and languages.
 
 Unlike conventional validators, `validation_semantic` focuses on **understanding meaning and intent**, not just pattern matching.
@@ -23,6 +25,7 @@ For instance, it can distinguish whether an input is a company name, an institut
 > ⚠️ **Note:** This library is **still in its experimental phase**.
 > Features, APIs, and validation results may change in future versions as testing and performance improvements are made.
 > 🧩 **Developer feedback is highly encouraged** — your suggestions, bug reports, and contributions are essential to help improve and stabilize this library.
+
 ---
 
 ---
