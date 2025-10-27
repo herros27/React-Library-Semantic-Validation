@@ -1,14 +1,12 @@
----
+
 # 🤖 `Semantic Validation` Library with Gemini API
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/herros27/validation_semantic)
 ![GitHub stars](https://img.shields.io/github/stars/herros27/validation_semantic?style=social)
-![TestPyPI](https://img.shields.io/badge/TestPyPI-validation--semantic-blue?logo=pypi)
+![PyPI](https://img.shields.io/badge/PyPI-validation--semantic-blue?logo=pypi)
 ![Rust Build Status](https://github.com/herros27/validation_semantic/actions/workflows/release.yml/badge.svg)
 ![npm version](https://img.shields.io/npm/v/validation_semantic?logo=npm)
 ![npm downloads](https://img.shields.io/npm/dt/validation_semantic?logo=npm)
-
----
 
 ---
 
