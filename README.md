@@ -22,6 +22,8 @@ With **Gemini API integration**, the validation process becomes more **contextua
 Unlike conventional validators, `validation_semantic` focuses on **understanding meaning and intent**, not just pattern matching.
 For instance, it can distinguish whether an input is a company name, an institution, a description, or narrative text — providing much more precise and meaningful validation.
 
+> ⚠️ **Note:** This library is **still in its experimental phase**.
+> Features, APIs, and validation results may change in future versions as testing and performance improvements are made.
 ---
 
 ---
