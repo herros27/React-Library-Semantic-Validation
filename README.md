@@ -24,6 +24,7 @@ For instance, it can distinguish whether an input is a company name, an institut
 
 > ⚠️ **Note:** This library is **still in its experimental phase**.
 > Features, APIs, and validation results may change in future versions as testing and performance improvements are made.
+> 🧩 **Developer feedback is highly encouraged** — your suggestions, bug reports, and contributions are essential to help improve and stabilize this library.
 ---
 
 ---
