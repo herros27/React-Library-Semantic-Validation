@@ -225,6 +225,14 @@ function makeMutClosure(arg0, arg1, dtor, f) {
     CLOSURE_DTORS.register(real, state, state);
     return real;
 }
+/**
+ * @param {string} api_key
+ */
+export function configure(api_key) {
+    const ptr0 = passStringToWasm0(api_key, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    wasm.configure(ptr0, len0);
+}
 
 export function init_panic_hook() {
     wasm.init_panic_hook();
@@ -234,17 +242,14 @@ export function init_panic_hook() {
  * @param {string} text
  * @param {number} model_selector_int
  * @param {string} input_type
- * @param {string} gemini_api_key
  * @returns {Promise<any>}
  */
-export function validateInput(text, model_selector_int, input_type, gemini_api_key) {
+export function validateInput(text, model_selector_int, input_type) {
     const ptr0 = passStringToWasm0(text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     const ptr1 = passStringToWasm0(input_type, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len1 = WASM_VECTOR_LEN;
-    const ptr2 = passStringToWasm0(gemini_api_key, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-    const len2 = WASM_VECTOR_LEN;
-    const ret = wasm.validateInput(ptr0, len0, model_selector_int, ptr1, len1, ptr2, len2);
+    const ret = wasm.validateInput(ptr0, len0, model_selector_int, ptr1, len1);
     return ret;
 }
 
@@ -256,12 +261,12 @@ export function getSupportedModelSelectors() {
     return ret;
 }
 
-function __wbg_adapter_10(arg0, arg1, arg2) {
-    wasm.closure131_externref_shim(arg0, arg1, arg2);
+function __wbg_adapter_6(arg0, arg1, arg2) {
+    wasm.closure133_externref_shim(arg0, arg1, arg2);
 }
 
-function __wbg_adapter_82(arg0, arg1, arg2, arg3) {
-    wasm.closure162_externref_shim(arg0, arg1, arg2, arg3);
+function __wbg_adapter_83(arg0, arg1, arg2, arg3) {
+    wasm.closure164_externref_shim(arg0, arg1, arg2, arg3);
 }
 
 const __wbindgen_enum_RequestCredentials = ["omit", "same-origin", "include"];
@@ -366,7 +371,7 @@ export function __wbg_new_d5e3800b120e37e1(arg0, arg1) {
             const a = state0.a;
             state0.a = 0;
             try {
-                return __wbg_adapter_82(a, state0.b, arg0, arg1);
+                return __wbg_adapter_83(a, state0.b, arg0, arg1);
             } finally {
                 state0.a = a;
             }
@@ -566,9 +571,9 @@ export function __wbindgen_cast_2241b6af4c4b2941(arg0, arg1) {
     return ret;
 };
 
-export function __wbindgen_cast_3390ea15fc53977a(arg0, arg1) {
-    // Cast intrinsic for `Closure(Closure { dtor_idx: 120, function: Function { arguments: [Externref], shim_idx: 131, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-    const ret = makeMutClosure(arg0, arg1, 120, __wbg_adapter_10);
+export function __wbindgen_cast_a984db0d3ac62838(arg0, arg1) {
+    // Cast intrinsic for `Closure(Closure { dtor_idx: 122, function: Function { arguments: [Externref], shim_idx: 133, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
+    const ret = makeMutClosure(arg0, arg1, 122, __wbg_adapter_6);
     return ret;
 };
 

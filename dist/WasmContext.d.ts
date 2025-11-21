@@ -9,4 +9,4 @@ export declare const WasmProvider: React.FC<{
     children: React.ReactNode;
 }>;
 export declare const useWasm: () => WasmContextType;
-export {};
+export { };

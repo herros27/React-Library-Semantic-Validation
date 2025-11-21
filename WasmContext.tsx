@@ -26,6 +26,7 @@ export const WasmProvider: React.FC<{ children: React.ReactNode }> = ({
       try {
         wasm.init_panic_hook();
         console.log("✅ WASM initialized globally");
+
         setWasmModule(wasm);
         setWasmReady(true);
       } catch (err) {

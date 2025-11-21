@@ -1,5 +1,5 @@
 {
-  "name": "@herros27/validation_semantic",
+  "name": "validation_semantic",
   "version": "1.1.1",
   "type": "module",
   "main": "dist/WasmContext.js",
@@ -13,6 +13,10 @@
   ],
   "scripts": {
     "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/herros27/React-Library-Semantic-Validation.git"
   },
   "sideEffects": [
     "./validation_semantic.js",
