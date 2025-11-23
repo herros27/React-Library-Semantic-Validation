@@ -256,12 +256,12 @@ export function validateInput(text, model_selector_int, input_type) {
 /**
  * @returns {any}
  */
-export function getSupportedModelSelectors() {
-    const ret = wasm.getSupportedModelSelectors();
+export function getSupportedModels() {
+    const ret = wasm.getSupportedModels();
     return ret;
 }
 
-function __wbg_adapter_6(arg0, arg1, arg2) {
+function __wbg_adapter_8(arg0, arg1, arg2) {
     wasm.closure133_externref_shim(arg0, arg1, arg2);
 }
 
@@ -304,8 +304,8 @@ export function __wbg_done_4a7743b6f942c9f3(arg0) {
     return ret;
 };
 
-export function __wbg_error_93e9c80f4a42a374(arg0, arg1) {
-    console.error(arg0, arg1);
+export function __wbg_error_41f0589870426ea4(arg0) {
+    console.error(arg0);
 };
 
 export function __wbg_fetch_9885d2e26ad251bb(arg0, arg1) {
@@ -573,7 +573,7 @@ export function __wbindgen_cast_2241b6af4c4b2941(arg0, arg1) {
 
 export function __wbindgen_cast_a984db0d3ac62838(arg0, arg1) {
     // Cast intrinsic for `Closure(Closure { dtor_idx: 122, function: Function { arguments: [Externref], shim_idx: 133, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-    const ret = makeMutClosure(arg0, arg1, 122, __wbg_adapter_6);
+    const ret = makeMutClosure(arg0, arg1, 122, __wbg_adapter_8);
     return ret;
 };
 

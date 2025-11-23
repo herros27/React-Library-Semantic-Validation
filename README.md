@@ -1,4 +1,3 @@
-
 # 🤖 `Semantic Validation` Library with Gemini API
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/herros27/validation_semantic)
@@ -16,7 +15,7 @@
 
 This library operates **entirely on the front-end side** (React, and Next), making it lightweight and efficient for client-side applications that require contextual and intelligent validation without relying heavily on server-side processing.
 
-It not only checks data validity **syntactically** (e.g., email or phone number formats), but also performs **semantic analysis** to understand the *meaning and context* of user input.
+It not only checks data validity **syntactically** (e.g., email or phone number formats), but also performs **semantic analysis** to understand the _meaning and context_ of user input.
 With **Gemini API integration**, the validation process becomes more **contextual, accurate, and adaptive** across multiple data types and languages.
 
 Unlike conventional validators, `validation_semantic` focuses on **understanding meaning and intent**, not just pattern matching.
@@ -103,20 +102,53 @@ export default defineConfig({
 });
 ```
 
-**Make sure the entire app is wrapped by WasmProvider in your main.tsx or app.tsx**
+### **Make sure the entire app is wrapped by WasmProvider in your `main.tsx`**
 
 ```ts
+// main.tsx
 import { WasmProvider } from "validation_semantic";
 
+createRoot(document.getElementById("root")!).render(
+  <WasmProvider>
+    <StrictMode>
+      <App />
+    </StrictMode>
+  </WasmProvider>
+);
+```
+
+---
+
+### **Required: Configure the Wasm Module With Your API Key from Goole AI Studio in `app.tsx` (or inside components wrapped by WasmProvider)**
+
+```ts
+// app.tsx
 export default function App() {
+  const { wasmReady, wasmModule } = useWasm();
+
+  useEffect(() => {
+    if (!wasmReady || !wasmModule) return;
+    const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+    wasmModule.configure(apiKey);
+  }, [wasmReady, wasmModule]);
+
   return (
-    // Makesure
-    <WasmProvider>
-      <Router>{/* All Your tag */}</Router>
-    </WasmProvider>
+    <Router>
+      <Routes>
+        <Route path='/' element={<FormTestPage />} />
+        <Route path='/developer' element={<FormDeveloperPage />} />
+      </Routes>
+    </Router>
   );
 }
 ```
+
+---
+
+### 📌 Important Note
+
+> `wasmModule.configure(apiKey)` **must be called inside a component rendered under `<WasmProvider>`**.
+> Otherwise, the WebAssembly module will not be fully initialized and validation features will fail.
 
 ---
 
@@ -134,14 +166,13 @@ export default function Example() {
       return;
     }
 
-    const models = wasmModule.getSupportedModelSelectors();
-    const model = models["GEMINI_FLASH"]; //GEMINI_FLASH_LITE, GEMINI_FLASH_LATEST, GEMMA
+    // You can use other model like GeminiFlash, GeminiFlashLatest, Gemma
+    const model = wasmModule.getSupportedModels().GeminiFlashLite;
 
     const result = await wasmModule.validateInput(
       "PT Sinar Mentari",
       model,
-      "company name",
-      your_gemini_api_key
+      "company name"
     );
 
     console.log(result);
@@ -189,7 +220,6 @@ type InputType =
 
 export default function BatchValidationExample() {
   const { wasmReady, wasmModule, error: wasmError } = useWasm();
-  const modelToUseKey = "GEMINI_FLASH"; //GEMINI_FLASH_LITE, GEMINI_FLASH_LATEST, GEMMA
 
   const [formData, setFormData] = useState<Record<InputType, string>>({
     email: "",
@@ -222,8 +252,8 @@ export default function BatchValidationExample() {
       return;
     }
 
-    const supportedModels = wasmModule.getSupportedModelSelectors();
-    const modelSelectorInt = supportedModels[modelToUseKey];
+    // You can use other model like GeminiFlash, GeminiFlashLatest, Gemma
+    const model = wasmModule.getSupportedModels().GeminiFlashLite;
 
     if (typeof modelSelectorInt === "undefined") {
       alert(`Model ${modelToUseKey} not found.`);
@@ -378,11 +408,12 @@ export default function BatchValidationExample() {
 
 ## 📘 Function Summary
 
-| Function                                                | Description                                        |
-| ------------------------------------------------------- | -------------------------------------------------- |
-| `useWasm()`                                             | React Hook to load and initialize the WASM module. |
-| `wasmModule.getSupportedModelSelectors()`               | Retrieves the list of supported Gemini models.     |
-| `validateInput(text, model, type, your_gemini_api_key)` | Runs semantic validation on the given text.        |
+| Function                                      | Description                                                                           |
+| --------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `useWasm()`                                   | React Hook to load and initialize the WASM module.                                    |
+| `wasmModule.getSupportedModels()`             | Retrieves the list of supported Gemini models.                                        |
+| `wasmModule.validateInput(text, model, type)` | Runs semantic validation on the given text.                                           |
+| `wasmModule.configure(yourApiKey)`            | Must be called once to set the Gemini API Key before validation features can be used. |
 
 ---
 
@@ -417,3 +448,10 @@ This project is distributed under the **MIT License**.
 Feel free to use, modify, and distribute it with attribution.
 
 ---
+
+# Changelog
+
+## 1.1.3 - 2025-11-22
+- Moved API Key configuration out of `validateInput()` → now required to call `wasmModule.configure(apiKey)` once after Wasm module is ready.
+- Updated supported model list to include latest Gemini model selectors.
+- Improved documentation and usage examples in README.
